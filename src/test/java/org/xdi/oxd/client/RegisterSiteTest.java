@@ -95,7 +95,7 @@ public class RegisterSiteTest {
     public void manual() throws IOException {
         CommandClient client = null;
         try {
-            client = new CommandClient("localhost", 8099);
+            client = new CommandClient("localhost", 8097);
 
             final RegisterSiteParams commandParams = new RegisterSiteParams();
 

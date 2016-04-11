@@ -14,7 +14,7 @@ public class TransportClientTest {
     public void test() throws IOException {
         TransportClient c = null;
         try {
-            c = new TransportClient("localhost", 8099);
+            c = new TransportClient("localhost", 8097);
 
             final String oneR = c.sendCommand("one command");
             System.out.println(oneR);
