@@ -123,17 +123,10 @@
             <version>${ce.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.xdi</groupId>
-            <artifactId>oxauth-client</artifactId>
-            <version>${ce.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>13.0.1</version>
         </dependency>
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -158,6 +151,20 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.xdi</groupId>
+            <artifactId>oxauth-client</artifactId>
+            <version>${ce.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.xdi</groupId>
+            <artifactId>oxd-server</artifactId>
+            <version>${ce.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
