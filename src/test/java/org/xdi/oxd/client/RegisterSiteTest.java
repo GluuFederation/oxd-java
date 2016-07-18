@@ -1,5 +1,6 @@
 package org.xdi.oxd.client;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
-import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.*;
 import static org.xdi.oxd.client.TestUtils.notEmpty;
 
 /**
@@ -27,20 +28,21 @@ public class RegisterSiteTest {
 
     private String oxdId = null;
 
-    @Parameters({"host", "port", "redirectUrl", "logoutUrl", "postLogoutRedirectUrl"})
+    @Parameters({"host", "port", "opHost", "redirectUrl", "logoutUrl", "postLogoutRedirectUrl"})
     @Test
-    public void register(String host, int port, String redirectUrl, String postLogoutRedirectUrl, String logoutUrl) throws IOException {
+    public void register(String host, int port, String opHost, String redirectUrl, String postLogoutRedirectUrl, String logoutUrl) throws IOException {
         CommandClient client = null;
         try {
             client = new CommandClient(host, port);
 
-            RegisterSiteResponse resp = registerSite(client, redirectUrl, postLogoutRedirectUrl, logoutUrl);
+            RegisterSiteResponse resp = registerSite(client, opHost, redirectUrl, postLogoutRedirectUrl, logoutUrl);
             assertNotNull(resp);
 
             notEmpty(resp.getOxdId());
 
             // more specific site registration
             final RegisterSiteParams commandParams = new RegisterSiteParams();
+            commandParams.setOpHost(opHost);
             commandParams.setAuthorizationRedirectUri(redirectUrl);
             commandParams.setPostLogoutRedirectUri(postLogoutRedirectUrl);
             commandParams.setClientLogoutUri(Lists.newArrayList(logoutUrl));
@@ -124,23 +126,25 @@ public class RegisterSiteTest {
         }
     }
 
-
-    public static RegisterSiteResponse registerSite(CommandClient client, String redirectUrl) {
-        return registerSite(client, redirectUrl, redirectUrl, "");
+    public static RegisterSiteResponse registerSite(CommandClient client, String opHost, String redirectUrl) {
+        return registerSite(client, opHost, redirectUrl, redirectUrl, "");
     }
 
-    public static RegisterSiteResponse registerSite(CommandClient client, String redirectUrl, String postLogoutRedirectUrl, String logoutUri) {
+    public static RegisterSiteResponse registerSite(CommandClient client, String opHost, String redirectUrl, String postLogoutRedirectUrl, String logoutUri) {
 
         final RegisterSiteParams commandParams = new RegisterSiteParams();
+        commandParams.setOpHost(opHost);
         commandParams.setAuthorizationRedirectUri(redirectUrl);
         commandParams.setPostLogoutRedirectUri(postLogoutRedirectUrl);
         commandParams.setClientLogoutUri(Lists.newArrayList(logoutUri));
+        commandParams.setScope(Lists.newArrayList("openid", "uma_protection", "uma_authorization"));
 
         final Command command = new Command(CommandType.REGISTER_SITE);
         command.setParamsObject(commandParams);
 
         final RegisterSiteResponse resp = client.send(command).dataAsResponse(RegisterSiteResponse.class);
         assertNotNull(resp);
+        assertTrue(!Strings.isNullOrEmpty(resp.getOxdId()));
         return resp;
     }
 
