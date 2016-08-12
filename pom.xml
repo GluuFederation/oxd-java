@@ -12,7 +12,8 @@
 
 
     <properties>
-        <ce.version>2.4.4.Final</ce.version>
+        <ce.version>2.4.4.sp1</ce.version>
+        <oxd.version>2.4.4.sp1</oxd.version>
         <jackson.version>1.9.9</jackson.version>
         <slf4j.version>1.7.11</slf4j.version>
     </properties>
@@ -117,7 +118,7 @@
         <dependency>
             <groupId>org.xdi</groupId>
             <artifactId>oxd-common</artifactId>
-            <version>${ce.version}</version>
+            <version>${oxd.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -160,7 +161,7 @@
         <dependency>
             <groupId>org.xdi</groupId>
             <artifactId>oxd-server</artifactId>
-            <version>${ce.version}</version>
+            <version>${oxd.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
