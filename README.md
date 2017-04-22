@@ -2,20 +2,20 @@
 
 oxd-java is a client library for the Gluu oxd server. For information about oxd, visit http://oxd.gluu.org
 
-Lastest code is maintained here
+Lastest code is MOVED and maintained here
 https://github.com/GluuFederation/oxd/tree/master/oxd-client
 
 ## Installation
 
-* [Github sources](https://github.com/GluuFederation/oxd-java)
-* Jar files are available on the [Maven repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
-* [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd-java/ws/target/)
-* [Tests on github](https://github.com/GluuFederation/oxd-java/blob/master/src/test/java/org/xdi/oxd/client)
-* [API Documentation (Javadocs)](https://oxd.gluu.org/api-docs/oxd-java/2.4.4)
+* [Github sources](https://github.com/GluuFederation/oxd/tree/master/oxd-client)
+* Jar files are available on the [Maven repo](http://ox.gluu.org/maven/org/xdi/oxd-client/)
+* [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd)
+* [Tests on github](https://github.com/GluuFederation/oxd/tree/master/oxd-client/src/test/java/org/xdi/oxd/client)
+* [API Documentation (Javadocs)](https://gluu.org/docs/oxd/libraries/java/)
 
 ## Configuration
 
-There are no configuration files for oxd-java. Redirect URI and
+There are no configuration files for oxd-client. Redirect URI and
 other information is set in the code.
 
 ## Sample code
