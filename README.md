@@ -2,6 +2,9 @@
 
 oxd-java is a client library for the Gluu oxd server. For information about oxd, visit http://oxd.gluu.org
 
+Lastest code is maintained here
+https://github.com/GluuFederation/oxd/tree/master/oxd-client
+
 ## Installation
 
 * [Github sources](https://github.com/GluuFederation/oxd-java)
